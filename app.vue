@@ -1,6 +1,6 @@
 <template>
-%//  <div>
-%//    <ClientOnly>
+/*  <div>
+*/    <ClientOnly>
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
