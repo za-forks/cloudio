@@ -25,11 +25,11 @@ export default defineNuxtConfig({
       FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
       FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
     },
-    private: {
-      FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-      FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID
-      // WHATSAPP_ACCESS_TOKEN: process.env.WHATSAPP_ACCESS_TOKEN,
-      // OPENAI_KEY: process.env.OPENAI_KEY
-    }
+    //private: {
+    //  FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+     // FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID
+     // // WHATSAPP_ACCESS_TOKEN: process.env.WHATSAPP_ACCESS_TOKEN,
+     // // OPENAI_KEY: process.env.OPENAI_KEY
+    //}
   }
 })
