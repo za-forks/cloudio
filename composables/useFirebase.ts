@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -8,6 +8,27 @@ import {
 
 import { addDoc, collection, getFirestore, getDocs, getDoc, setDoc, doc, query, onSnapshot, writeBatch, deleteDoc, updateDoc, orderBy, where, limit, DocumentData, Query, increment } from "firebase/firestore"
 import type { DocumentData } from "firebase/firestore"
+
+export const useFirebase = () => {
+  const config = useRuntimeConfig() // This MUST be inside the export function
+
+  const firebaseConfig = {
+    apiKey: config.public.FIREBASE_API_KEY,
+    projectId: config.public.FIREBASE_PROJECT_ID,
+    authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
+  }
+
+  // Check if Firebase is already initialized to prevent duplicate app errors
+  const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
+  
+  const auth = getAuth(app)
+  const db = getFirestore(app)
+
+  return {
+    auth,
+    db
+  }
+}
 
 export const createUser = async (email: string, password: string) => {
   const auth = getAuth();
