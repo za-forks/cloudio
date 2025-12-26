@@ -14,8 +14,8 @@ const getFirebaseApp = () => {
   const config = useRuntimeConfig()
   const firebaseConfig = {
     apiKey: config.public.FIREBASE_API_KEY,
-    projectId: "cloudio-7", //config.public.FIREBASE_PROJECT_ID,
-    authDomain: "cloudio-7.firebaseapp.com", //"cloudio-pied.vercel.app", //`${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
+    projectId: config.public.FIREBASE_PROJECT_ID, // "cloudio-7", //
+    authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`, // "cloudio-7.firebaseapp.com", //"cloudio-pied.vercel.app", //
     appId: config.public.FIREBASE_APP_ID,
   }
   return getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
