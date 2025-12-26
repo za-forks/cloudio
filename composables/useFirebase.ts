@@ -9,24 +9,24 @@ import {
 import { addDoc, collection, getFirestore, getDocs, getDoc, setDoc, doc, query, onSnapshot, writeBatch, deleteDoc, updateDoc, orderBy, where, limit, DocumentData, Query, increment } from "firebase/firestore"
 import type { DocumentData } from "firebase/firestore"
 
-export const useFirebase = () => {
-  const config = useRuntimeConfig() // This MUST be inside the export function
-
+// 1. Create a helper to get the initialized app safely
+const getFirebaseApp = () => {
+  const config = useRuntimeConfig()
   const firebaseConfig = {
     apiKey: config.public.FIREBASE_API_KEY,
     projectId: config.public.FIREBASE_PROJECT_ID,
     authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
   }
+  return getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
+}
 
-  // Check if Firebase is already initialized to prevent duplicate app errors
-  const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
-  
-  const auth = getAuth(app)
-  const db = getFirestore(app)
-
+export const useFirebase = () => {
+  const config = useRuntimeConfig()
+  console.log("DEBUG: Key exists?", !!config.public.FIREBASE_API_KEY)
+  const app = getFirebaseApp()
   return {
-    auth,
-    db
+    auth: getAuth(app),
+    db: getFirestore(app)
   }
 }
 
@@ -43,8 +43,13 @@ export const createUser = async (email: string, password: string) => {
   return credentials;
 };
 
+//export const signInUser = async (email: string, password: string) => {
+//  const auth = getAuth();
+// 2. Update your Auth functions to pass the app explicitly
 export const signInUser = async (email: string, password: string) => {
-  const auth = getAuth();
+  const app = getFirebaseApp(); // Force initialization here
+  const auth = getAuth(app);    // Pass the app to getAuth
+  
   const credentials = await signInWithEmailAndPassword(
     auth,
     email,
@@ -79,9 +84,13 @@ export const signInUser = async (email: string, password: string) => {
   return credentials;
 };
 
+//export const initUser = async () => {
+//  const auth = getAuth();
+//  const db = getFirestore();
 export const initUser = async () => {
-  const auth = getAuth();
-  const db = getFirestore();
+  const app = getFirebaseApp();
+  const auth = getAuth(app);
+  const db = getFirestore(app);
   const firebaseUser = useFirebaseUser();
   const firebaseItems = useFirebaseItems();
   firebaseUser.value = auth.currentUser;
