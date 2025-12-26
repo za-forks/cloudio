@@ -15,7 +15,7 @@ const getFirebaseApp = () => {
   const firebaseConfig = {
     apiKey: config.public.FIREBASE_API_KEY,
     projectId: config.public.FIREBASE_PROJECT_ID,
-    // authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
+    authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
     appId: config.public.FIREBASE_APP_ID,
   }
   return getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
@@ -130,6 +130,7 @@ export const watchDb = async (collectionName) => {
   const firebaseConfig = {
     apiKey: config.public.FIREBASE_API_KEY,
     projectId: config.public.FIREBASE_PROJECT_ID,
+    appId: config.public.FIREBASE_APP_ID,
     authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
   };
 
