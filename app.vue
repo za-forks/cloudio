@@ -1,9 +1,9 @@
 <template>
-//  <div>
-//    <ClientOnly>
+%//  <div>
+%//    <ClientOnly>
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-//    </ClientOnly>
-//  </div>
+%//    </ClientOnly>
+%//  </div>
 </template>
