@@ -96,8 +96,9 @@ export const watchDb = async (collectionName) => {
   const config = useRuntimeConfig();
 
   const firebaseConfig = {
-    apiKey: config.FIREBASE_API_KEY,
-    projectId: config.FIREBASE_PROJECT_ID,
+    apiKey: config.public.FIREBASE_API_KEY,
+    projectId: config.public.FIREBASE_PROJECT_ID,
+    authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
   };
 
   // Initialize Firebase
