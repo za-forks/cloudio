@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 
 import { addDoc, collection, getFirestore, getDocs, getDoc, setDoc, doc, query, onSnapshot, writeBatch, deleteDoc, updateDoc, orderBy, where, limit, DocumentData, Query, increment } from "firebase/firestore"
+import type { DocumentData } from "firebase/firestore"
 
 export const createUser = async (email: string, password: string) => {
   const auth = getAuth();
