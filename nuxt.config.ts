@@ -24,9 +24,9 @@ export default defineNuxtConfig({
     // Private keys (server only)
     // Public keys (available in browser)
     public: {
-      FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-      FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
-      FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
+      FIREBASE_API_KEY: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
+      FIREBASE_PROJECT_ID: process.env.NUXT_PUBLIC_FIREBASE_PROJECT_ID,
+      FIREBASE_APP_ID: process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
     }
    //runtimeConfig: {
    // public: {
