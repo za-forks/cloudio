@@ -30,7 +30,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     console.error("Firebase failed to initialize:", error);
     // We don't throw the error here so the rest of the app can still load
   }
-});
 
   // initUser();
   
