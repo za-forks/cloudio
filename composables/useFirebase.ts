@@ -21,10 +21,10 @@ const getSafeApp = () => {
 
   const config = useRuntimeConfig();
   const firebaseConfig = {
-    apiKey: "AIzaSyD2EM9r-m0bhiLm1W9cgQ5lirQ9sD--G_s", //"AIzaSyA0GyLEOKOXPT5OEHJ7xiwq4nffNVnHZg8", //config.public.FIREBASE_API_KEY,
-    projectId: "cloudio-7", //config.public.FIREBASE_PROJECT_ID,
-    authDomain: "cloudio-7.firebaseapp.com", // "cloudio-7.web.app", //`${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
-    appId: "1:959241989090:web:726c2b8cc005b1b6fd67bb", // config.public.FIREBASE_APP_ID,
+    apiKey: config.public.FIREBASE_API_KEY, 
+    projectId: config.public.FIREBASE_PROJECT_ID,
+    authDomain: `${config.public.FIREBASE_PROJECT_ID}.firebaseapp.com`,
+    appId: config.public.FIREBASE_APP_ID,
   };
 
   return getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
