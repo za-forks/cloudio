@@ -38,8 +38,7 @@ const getServices = () => {
   console.log("Current Auth User:", auth.currentUser?.email || "NOT LOGGED IN"); // temp
   
   return { 
-    // auth: getAuth(app), 
-    auth,
+    auth: getAuth(app), 
     db: getFirestore(app) 
   };
 };
