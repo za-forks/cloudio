@@ -34,8 +34,12 @@ const getSafeApp = () => {
 const getServices = () => {
   const app = getSafeApp();
   if (!app) throw new Error("Firebase cannot be initialized on the server.");
+  // ADD THIS LOG TEMPORARILY:
+  console.log("Current Auth User:", auth.currentUser?.email || "NOT LOGGED IN"); // temp
+  
   return { 
-    auth: getAuth(app), 
+    // auth: getAuth(app), 
+    auth,
     db: getFirestore(app) 
   };
 };
