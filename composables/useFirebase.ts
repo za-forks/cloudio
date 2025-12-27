@@ -16,10 +16,10 @@ import {
 // This ensures we never run Firebase on the server (solving Hydration errors)
 // and never initialize the app twice (solving API Key errors).
 const getSafeApp = () => {
-  console.log("FIREBASE CONFIG CHECK:", config.public.FIREBASE_API_KEY);
-  if (process.server) return null; 
-
+  if (process.server) return null;
   const config = useRuntimeConfig();
+  console.log("FIREBASE CONFIG CHECK:", config.public.FIREBASE_API_KEY);
+
   const firebaseConfig = {
     apiKey: config.public.FIREBASE_API_KEY, 
     projectId: config.public.FIREBASE_PROJECT_ID,
