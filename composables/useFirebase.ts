@@ -110,11 +110,28 @@ export const initUser = async () => {
 
 /* --- FIRESTORE FUNCTIONS --- */
 
+/*
 export const addDocToFirestore = async (collectionName: string, data: any) => {
   const { db } = getServices();
   try {
     const docRef = collection(db, collectionName);
     return await addDoc(docRef, data);
+  } catch (error) {
+    console.error('Firestore Add Error:', error);
+    return error;
+  }
+};
+*/
+
+export const addDocToFirestore = async (collectionName: string, data: any) => {
+  const { db } = getServices();
+  try {
+    const docRef = collection(db, collectionName);
+    
+    // Convert Vue reactive object to plain JS object to ensure Firebase accepts it
+    const plainData = JSON.parse(JSON.stringify(data));
+    
+    return await addDoc(docRef, plainData);
   } catch (error) {
     console.error('Firestore Add Error:', error);
     return error;
