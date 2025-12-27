@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import {
   getAuth,
 } from "firebase/auth";
@@ -31,13 +31,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     // We don't throw the error here so the rest of the app can still load
   }
 
-  // initUser();
-  
-  const auth = getAuth();
-  
-  nuxtApp.vueApp.provide('auth', auth);
-  nuxtApp.provide('auth', auth);
-  
+  // initUser(); 
   
   // nuxtApp.vueApp.provide('db', db);
   // nuxtApp.provide('db', db);
